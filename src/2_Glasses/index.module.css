@@ -1,0 +1,21 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.Banner img{
+    width: 20%;
+}
+
+.background {
+    background-color: rgba(46, 44, 44, 0.7);
+    text-align: center;
+    color: white;
+}
+
+.GlassesItem img{
+    width: 20%;
+    margin: 30px 10px;
+    border: 1px solid black;
+}
