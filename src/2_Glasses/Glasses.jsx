@@ -1,7 +1,6 @@
 import React from 'react'
 import Banner from './Banner'
 import Header from './Header'
-import Item from './Item'
 
 function Glasses() {
   return (
@@ -9,7 +8,7 @@ function Glasses() {
         <Header/>
         <div style={{width:'75%', margin:'auto'}}>
             <Banner/>
-            <Item/>
+            
         </div>
     </div>
   )
