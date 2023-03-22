@@ -4,18 +4,40 @@
     box-sizing: border-box;
 }
 
+.Banner {
+    position: relative;
+}
+
 .Banner img{
     width: 20%;
+    padding-top: 50px;
+    padding-bottom: 150px;
 }
 
 .background {
     background-color: rgba(46, 44, 44, 0.7);
     text-align: center;
     color: white;
+    padding: 20px 0px;
 }
 
-.GlassesItem img{
-    width: 20%;
-    margin: 30px 10px;
-    border: 1px solid black;
+.container{
+    width: 75%;
+    margin: auto;
+    
+}
+
+.container img{
+    width: 150px;
+    padding: 20px;
+    background-color: white;
+}
+
+
+.putGlasses img{
+    position: absolute;
+    width: 152px;
+    top: 235px;
+    left: 305px;
+    opacity: 0.7;
 }
