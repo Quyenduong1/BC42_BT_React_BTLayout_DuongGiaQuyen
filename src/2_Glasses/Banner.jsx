@@ -7,8 +7,13 @@ function Banner() {
   return (
     <div>
         <div className={styles.Banner} style={{display:'flex', justifyContent:'space-between'}}>
-            <img className='pic1' src="./glassesImage/model.jpg" alt="" />
-            <img src="./glassesImage/model.jpg" alt="" />
+            <div>
+                <img src="./glassesImage/model.jpg" alt="" />
+                <div className='imgLeft'></div>
+            </div>
+            <div style={{textAlign:'right'}}>
+                <img src="./glassesImage/model.jpg" alt="" />
+            </div>
         </div>
 
         <div className={styles.putGlasses}>

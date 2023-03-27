@@ -1,0 +1,11 @@
+.card {
+    position: relative;
+}
+
+.card .background{
+    /* display: none; */
+    width: 414px;
+    height: 414px;
+    background-color: rgba(153, 161, 177, 0.5);
+    position: absolute;
+}
