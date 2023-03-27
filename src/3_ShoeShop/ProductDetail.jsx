@@ -12,7 +12,7 @@ function ProductDetail({onSeclectProduct,onClose}) {
               <div style={{width:'200%',right:'250px'}} className="modal-content">
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                  <button onClick={() =>onClose()} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+                  <button onClick={onClose} className="btn-close"/>
                 </div>
                 <div className="modal-body">
                 <div className='mt-4 row'>
@@ -48,7 +48,7 @@ function ProductDetail({onSeclectProduct,onClose}) {
     </div>
                 </div>
                 <div className="modal-footer">
-                  <button onClick={() =>onClose()} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button onClick={onClose} className="btn btn-secondary" >Close</button>
                 </div>
               </div>
             </div>

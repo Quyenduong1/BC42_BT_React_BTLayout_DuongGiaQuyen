@@ -17,7 +17,7 @@ function Shoeshop() {
         <h1 className='text-center'>Shoe Shop</h1>
 
         <ProductList products = {data} onSeclectProduct={handleGetProduct}/>
-        <ProductDetail onSeclectProduct={selectedProduct} onClose={setselectedProduct}/>
+        <ProductDetail onSeclectProduct={selectedProduct} onClose={() => setselectedProduct(false) }/>
     </div>
   )
 }
