@@ -8,8 +8,8 @@ function ProductDetail({onSeclectProduct,onClose}) {
     <>
       <div>
           <div style={{display:'block'}} className="modal show fade"  tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-              <div style={{width:'200%',right:'250px'}} className="modal-content">
+            <div className="modal-dialog modal-xl">
+              <div  className="modal-content">
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                   <button onClick={onClose} className="btn-close"/>
