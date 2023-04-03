@@ -24,7 +24,7 @@ function UserList({users}) {
               <td><img width={'60px'} height={'60px'} src={user.image} alt={user.name} /></td>
               <td>{user.price}</td>
               <td>
-                <button className='btn btn-warning'>Edit</button>
+                <button className='btn btn-warning me-2'>Edit</button>
                 <button className='btn btn-danger'>Delete</button>
               </td>
               

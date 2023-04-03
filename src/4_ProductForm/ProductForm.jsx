@@ -4,8 +4,14 @@ import UserList from './UserList'
 import datas from './data.json'
 
 function ProductForm() {
-  // state quann ly danh sach nguoi dung
+
   const [users, setUsers] = useState([])
+
+  const handleSubmit = (user) => {
+    setUsers([...users, user]);
+  };
+
+  
 
 
   return (
@@ -20,7 +26,12 @@ function ProductForm() {
         </div>
 
         <div className='mt-4'>
-          <UserList users = {datas}/>
+          <input type="text" placeholder='Search By Name' />
+          <button className='btn btn-success mx-2'>Search</button>
+        </div>
+
+        <div className='mt-4'>
+          <UserList users = {datas} onSubmit={handleSubmit}/>
         </div>
     </div>
   )
