@@ -1,8 +1,10 @@
 import React,{useState} from 'react'
 
 function UserForm({onSubmit}) {
+
   const handleSubmit = (evt) => {
     evt.preventDefault()
+    
     const user = {...values, id: Math.floor(Math.random() * 100)};
 
     onSubmit(user);
@@ -11,26 +13,26 @@ function UserForm({onSubmit}) {
   }
 
   const [values,setValues] = useState({
-    Name:'',
-    Type:'',
-    Description:'',
-    Image: '',
-    Price:'',
+    name:'',
+    type:'',
+    description:'',
+    image: '',
+    price:'',
   })
 
   const handleChange = (evt) => { 
-    const {value,name} = evt.target
+    const {value,name} = evt.target;
     setValues({...values,
     [name]: value,});
   }
 
   const handleResetForm = () => {
     setValues({
-    Name:'',
-    Type:'',
-    Description:'',
-    Image: '',
-    Price:'',
+    name:'',
+    type:'',
+    description:'',
+    image: '',
+    price:'',
     });
   };
   
@@ -39,27 +41,27 @@ function UserForm({onSubmit}) {
     <form onSubmit={handleSubmit}>
       <div className='mb-3'>
         <label className='form-label'>Name</label>
-        <input name='Name' type="text" className='form-control' value={values.Name} onChange={handleChange} />
+        <input name='name' type="text" className='form-control' value={values.name} onChange={handleChange} />
       </div>
 
       <div className='mb-3'>
         <label className='form-label'>Type</label>
-        <input name='Type' type="text" className='form-control' value={values.Type} onChange={handleChange} />
+        <input name='type' type="text" className='form-control' value={values.type} onChange={handleChange} />
       </div>
 
       <div className='mb-3'>
         <label className='form-label'>Description</label>
-        <input name='Description' type="text" className='form-control' value={values.Description} onChange={handleChange} />
+        <input name='description' type="text" className='form-control' value={values.description} onChange={handleChange} />
       </div>
 
       <div className='mb-3'>
         <label className='form-label'>Image</label>
-        <input name='Image' type="text" className='form-control' value={values.Image} onChange={handleChange} />
+        <input name='image' type="text" className='form-control' value={values.image} onChange={handleChange} />
       </div>
 
       <div className='mb-3'>
         <label className='form-label'>Price</label>
-        <input  name='Price' type="text" className='form-control' value={values.Price} onChange={handleChange} />
+        <input  name='price' type="text" className='form-control' value={values.price} onChange={handleChange} />
       </div>
 
       <button type='submit' className='btn btn-success me-2' >Submit</button>

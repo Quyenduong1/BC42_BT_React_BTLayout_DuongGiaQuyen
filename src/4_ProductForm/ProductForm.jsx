@@ -1,17 +1,21 @@
 import React,{useState} from 'react'
 import UserForm from './UserForm'
 import UserList from './UserList'
-import datas from './data.json'
 
 function ProductForm() {
 
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([
+    {id:1, name: 'Iphone', type:'Phone', description:'Iphone...',Image:'./img/sp_iphoneX.png',price:'999',}
+  ]);
 
   const handleSubmit = (user) => {
     setUsers([...users, user]);
   };
 
-  
+  const handleDelete = (userId) => {
+    const newUsers = users.filter((user) => user.id !== userId)
+    setUsers(newUsers);
+  }
 
 
   return (
@@ -21,7 +25,7 @@ function ProductForm() {
         <div className='card'>
           <div className='card-header bg-dark text-white'> User Form</div>
           <div className='card-body'>
-            <UserForm/>
+            <UserForm onSubmit={handleSubmit}/>
           </div>
         </div>
 
@@ -31,7 +35,7 @@ function ProductForm() {
         </div>
 
         <div className='mt-4'>
-          <UserList users = {datas} onSubmit={handleSubmit}/>
+          <UserList users = {users} onDelete={handleDelete} />
         </div>
     </div>
   )
