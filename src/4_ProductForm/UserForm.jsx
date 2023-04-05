@@ -1,23 +1,24 @@
 import React,{useState} from 'react'
 
-function UserForm({onSubmit}) {
+function UserForm({onSubmit,editUser}) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    
-    const user = {...values, id: Math.floor(Math.random() * 100)};
 
-    onSubmit(user);
+    // const user = {...values, id: Math.floor(Math.random() * 100)};
+
+    onSubmit(values, values.id ? 'update' : 'create');
 
     handleResetForm();
   }
 
   const [values,setValues] = useState({
-    name:'',
-    type:'',
-    description:'',
-    image: '',
-    price:'',
+    id: editUser.id,
+    name: editUser.name,
+    type:editUser.type,
+    description:editUser.description,
+    image: editUser.image,
+    price:editUser.price,
   })
 
   const handleChange = (evt) => { 

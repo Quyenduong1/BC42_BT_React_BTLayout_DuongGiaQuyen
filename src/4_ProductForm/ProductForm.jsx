@@ -8,8 +8,20 @@ function ProductForm() {
     {id:1, name: 'Iphone', type:'Phone', description:'Iphone...',Image:'./img/sp_iphoneX.png',price:'999',}
   ]);
 
-  const handleSubmit = (user) => {
-    setUsers([...users, user]);
+  const handleSubmit = (user, type) => {
+    if(type === 'create') {
+      user.id = Math.floor(Math.random() * 100);
+      setUsers([...users, user]);
+    } else if(type === 'update') {
+      const newUsers = users.map((item) => {
+        if(item.id === user.id) {
+          return user = {...user, ...user};
+        }
+        return item;
+      })
+      setUsers(newUsers);
+
+    }
   };
 
   const handleDelete = (userId) => {
@@ -17,6 +29,12 @@ function ProductForm() {
     setUsers(newUsers);
   }
 
+  const [selectUser, setSelectUser] = useState({})
+
+  const handleSelectUser = (user) => {
+    console.log(user);
+    setSelectUser(user);
+  }
 
   return (
     <div className='container-fluid'>
@@ -25,7 +43,7 @@ function ProductForm() {
         <div className='card'>
           <div className='card-header bg-dark text-white'> User Form</div>
           <div className='card-body'>
-            <UserForm onSubmit={handleSubmit}/>
+            <UserForm key={selectUser.id} onSubmit={handleSubmit} editUser={selectUser}/>
           </div>
         </div>
 
@@ -35,7 +53,7 @@ function ProductForm() {
         </div>
 
         <div className='mt-4'>
-          <UserList users = {users} onDelete={handleDelete} />
+          <UserList users = {users} onDelete={handleDelete} onSelectUser={handleSelectUser} />
         </div>
     </div>
   )

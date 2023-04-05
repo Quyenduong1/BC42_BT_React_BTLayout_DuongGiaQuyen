@@ -1,6 +1,6 @@
 import React from 'react'
 
-function UserList({users,onDelete}) {
+function UserList({users,onDelete,onSelectUser}) {
   return (
     <table className='table'>
       <thead>
@@ -24,7 +24,7 @@ function UserList({users,onDelete}) {
               <td><img width={'60px'} height={'60px'} src={user.image} alt={user.name} /></td>
               <td>{user.price}$</td>
               <td>
-                <button className='btn btn-warning me-2'>Edit</button>
+                <button onClick={() => onSelectUser(user)} className='btn btn-warning me-2'>Edit</button>
                 <button onClick={() => onDelete(user.id)} className='btn btn-danger'>Delete</button>
               </td>
               
