@@ -1,40 +1,71 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import UserForm from './UserForm'
 import UserList from './UserList'
+import axios from 'axios'
+import Search from './Search';
 
 function ProductForm() {
 
-  const [users, setUsers] = useState([
-    {id:1, name: 'Iphone', type:'Phone', description:'Iphone...',Image:'./img/sp_iphoneX.png',price:'999',}
-  ]);
+  const [users, setUsers] = useState([]);
 
-  const handleSubmit = (user, type) => {
-    if(type === 'create') {
-      user.id = Math.floor(Math.random() * 100);
-      setUsers([...users, user]);
-    } else if(type === 'update') {
-      const newUsers = users.map((item) => {
-        if(item.id === user.id) {
-          return user = {...user, ...user};
-        }
-        return item;
-      })
-      setUsers(newUsers);
+  const [searchValues, setSearchValues] = useState("")
 
+  const handleSubmit = async (user) => {
+    const {id, ...payload} = user;
+    try {
+      if(id) {
+        await axios.put(`https://63f716f9e8a73b486af07468.mockapi.io/api/users/${id}`,payload)
+     
+      } else {
+        await axios.post('https://63f716f9e8a73b486af07468.mockapi.io/api/users',payload)
+      }
+
+      fetchForm();
+      
+    } catch (error) {
+      console.log(error);
     }
+   
   };
 
-  const handleDelete = (userId) => {
-    const newUsers = users.filter((user) => user.id !== userId)
-    setUsers(newUsers);
+  const handleDelete = async (userId) => {
+    try {
+      await axios.delete(`https://63f716f9e8a73b486af07468.mockapi.io/api/users/${userId}`)
+      fetchForm();
+      
+    } catch (error) {
+      console.log('error');
+    }
   }
 
   const [selectUser, setSelectUser] = useState({})
 
   const handleSelectUser = (user) => {
-    console.log(user);
     setSelectUser(user);
   }
+
+  const fetchForm = async () => {
+    try {
+     const reponse = await axios.get('https://63f716f9e8a73b486af07468.mockapi.io/api/users',{
+     params: {
+        name: searchValues || undefined
+     }
+     })
+ 
+     setUsers(reponse.data);
+    } catch (error) {
+     console.log('error');
+    }
+   }
+
+   const handleSearch = (evt) => {
+    console.log(evt);
+    setSearchValues(evt);
+   }
+ 
+   useEffect(() => {
+     fetchForm();
+   },[searchValues])
 
   return (
     <div className='container-fluid'>
@@ -43,14 +74,11 @@ function ProductForm() {
         <div className='card'>
           <div className='card-header bg-dark text-white'> User Form</div>
           <div className='card-body'>
-            <UserForm key={selectUser.id} onSubmit={handleSubmit} editUser={selectUser}/>
+            <UserForm onSubmit={handleSubmit} editUser={selectUser} onReset={()=>setSelectUser({})}/>
           </div>
         </div>
 
-        <div className='mt-4'>
-          <input type="text" placeholder='Search By Name' />
-          <button className='btn btn-success mx-2'>Search</button>
-        </div>
+        <Search onSearch={handleSearch}/>
 
         <div className='mt-4'>
           <UserList users = {users} onDelete={handleDelete} onSelectUser={handleSelectUser} />

@@ -20,7 +20,7 @@ function UserList({users,onDelete,onSelectUser}) {
             <tr key={user.id}>
               <td>{user.name}</td>
               <td>{user.type}</td>
-              <td>{user.description}</td>
+              <td>{user.Description}</td>
               <td><img width={'60px'} height={'60px'} src={user.image} alt={user.name} /></td>
               <td>{user.price}$</td>
               <td>

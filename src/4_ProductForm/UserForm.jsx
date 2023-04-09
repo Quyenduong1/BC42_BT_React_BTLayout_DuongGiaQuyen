@@ -1,25 +1,29 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 
-function UserForm({onSubmit,editUser}) {
+function UserForm({onSubmit,editUser,onReset}) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
 
     // const user = {...values, id: Math.floor(Math.random() * 100)};
 
-    onSubmit(values, values.id ? 'update' : 'create');
+    onSubmit(values);
 
     handleResetForm();
   }
 
   const [values,setValues] = useState({
-    id: editUser.id,
-    name: editUser.name,
-    type:editUser.type,
-    description:editUser.description,
-    image: editUser.image,
-    price:editUser.price,
+    // id: "",
+    // name:  "",
+    // type:  "",
+    // Description: "",
+    // image:  "",
+    // price:  "",
   })
+
+  useEffect(() => {
+    setValues(editUser);
+  },[editUser])
 
   const handleChange = (evt) => { 
     const {value,name} = evt.target;
@@ -31,10 +35,11 @@ function UserForm({onSubmit,editUser}) {
     setValues({
     name:'',
     type:'',
-    description:'',
+    Description:'',
     image: '',
     price:'',
     });
+    onReset();
   };
   
 
@@ -52,7 +57,7 @@ function UserForm({onSubmit,editUser}) {
 
       <div className='mb-3'>
         <label className='form-label'>Description</label>
-        <input name='description' type="text" className='form-control' value={values.description} onChange={handleChange} />
+        <input name='description' type="text" className='form-control' value={values.Description} onChange={handleChange} />
       </div>
 
       <div className='mb-3'>
