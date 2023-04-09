@@ -57,7 +57,7 @@ function UserForm({onSubmit,editUser,onReset}) {
 
       <div className='mb-3'>
         <label className='form-label'>Description</label>
-        <input name='description' type="text" className='form-control' value={values.Description} onChange={handleChange} />
+        <input name='Description' type="text" className='form-control' value={values.Description} onChange={handleChange} />
       </div>
 
       <div className='mb-3'>
